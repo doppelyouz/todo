@@ -1,8 +1,9 @@
+import { Header } from "./components";
 
 function App() {
   return (
     <div className="App">
-      <p style={{color: "white"}}>DASDASDAS</p>
+      <Header />
     </div>
   );
 }
