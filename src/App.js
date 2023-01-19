@@ -1,13 +1,10 @@
-import { Header, InputTodo, WorkSpace, Todos } from "./components";
+import { Header, WorkSpace } from "./components";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <WorkSpace> 
-        <InputTodo />
-        <Todos />
-      </WorkSpace>
+      <WorkSpace /> 
     </div>
   );
 }

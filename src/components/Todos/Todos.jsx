@@ -1,8 +1,17 @@
 import React from 'react'
+import Todo from '../Todo/Todo';
 
-const Todos = () => {
+import './todos.scss'
+
+const Todos = ({todos}) => {
   return (
-    <div>Todos</div>
+    <div className='todos'>
+        {
+          todos.map((todo, i) => {
+            return <Todo title={todo.title} note={todo.note} date={todo.date} key={i} />
+          })
+        }
+    </div>
   )
 }
 

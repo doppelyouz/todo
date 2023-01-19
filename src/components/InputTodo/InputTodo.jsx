@@ -4,13 +4,12 @@ import "./inputTodo.scss";
 
 import Button from "@mui/material/Button";
 
-const InputTodo = () => {
+const InputTodo = ({addTodo}) => {
   const [formData, setFormData] = useState({
     title: "",
     note: "",
+    date: new Date().toLocaleDateString()
   });
-
-  console.log("formData: ", formData);
 
   const inputChangeHandler = (e) => {
     const { value, name } = e.target;
@@ -25,7 +24,14 @@ const InputTodo = () => {
   
   const sumbitTodo = (event) => {
     event.preventDefault();
-    console.log(formData);
+    if(formData.title && formData.note) {
+      addTodo(formData);
+      setFormData({
+        title: "",
+        note: "",
+        date: new Date().toLocaleDateString()
+      });
+    }
   }
 
   return (
@@ -46,6 +52,7 @@ const InputTodo = () => {
             name="note"
             className="textarea_todo"
             placeholder="Ваша заметка"
+            value={formData.note}
             onChange={inputChangeHandler}
           />
         </label>
