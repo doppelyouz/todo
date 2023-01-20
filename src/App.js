@@ -1,4 +1,5 @@
 import { Header, WorkSpace } from "./components";
+import './styles/main.scss'
 
 function App() {
   return (

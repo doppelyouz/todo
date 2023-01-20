@@ -5,9 +5,9 @@ import './todo.scss'
 const Todo = ({title, note, date}) => {
   return (
     <div className='todo'>
-        <p>{title}</p>
-        <p>{note}</p>
-        <p>{date}</p>
+        <div className='title'>{title}</div>
+        <div className='note'>{note}</div>
+        <div className='date'>{date}</div>
     </div>
   )
 }
