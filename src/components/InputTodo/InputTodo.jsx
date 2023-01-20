@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 
 import "./inputTodo.scss";
+import { useSnackbar } from 'notistack';
 
 import Button from "@mui/material/Button";
 
 const InputTodo = ({addTodo}) => {
+  const { enqueueSnackbar } = useSnackbar();
+
   const [formData, setFormData] = useState({
     title: "",
     note: "",
@@ -24,8 +27,22 @@ const InputTodo = ({addTodo}) => {
   
   const sumbitTodo = (event) => {
     event.preventDefault();
+    
+    if (!formData.title) {
+      enqueueSnackbar("Title is empty", { variant: "error" });
+      return;
+    }
+
+    if (!formData.note) {
+      enqueueSnackbar("Note is empty", { variant: "error" });
+      return;
+    }
+
     if(formData.title && formData.note) {
       addTodo(formData);
+      
+      enqueueSnackbar("Todo has been added", { variant: "success" });
+
       setFormData({
         title: "",
         note: "",
