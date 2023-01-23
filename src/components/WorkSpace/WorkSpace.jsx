@@ -47,16 +47,17 @@ const WorkSpace = () => {
   const editTodo = (id, title, note) => {
     const newTodos = todos.map(t => {
       if(t.id === id) {
+        if(title || note) {
+          enqueueSnackbar("Todo has been changed", { variant: "info" });
+        }
         return {
           ...t,
           title,
-          note,
-          editing: !t.editing
+          note
         }
       }
       return t;
     })
-    console.log(newTodos);
     setTodos(newTodos);
     localStorage.setItem("Todos", JSON.stringify(newTodos));
   }

@@ -13,8 +13,7 @@ const InputTodo = ({addTodo}) => {
     title: "",
     note: "",
     date: new Date().toLocaleDateString(),
-    checked: false,
-    editing: false
+    checked: false
   });
 
   const inputChangeHandler = (e) => {
@@ -51,8 +50,7 @@ const InputTodo = ({addTodo}) => {
         title: "",
         note: "",
         date: new Date().toLocaleDateString(),
-        checked: false,
-        editing: false
+        checked: false
       });
     }
   }

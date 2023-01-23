@@ -13,10 +13,10 @@ const Todo = ({
   checkTodo,
   deleteTodo,
   editTodo,
-  editing,
   id,
   checked,
 }) => {
+  const [editing, setEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(title);
   const [editNote, setEditNote] = useState(note);
 
@@ -54,7 +54,10 @@ const Todo = ({
               />
             </label>
           </div>
-          <button onClick={() => editTodo(id, editTitle, editNote)}>
+          <button onClick={() => {
+            editTodo(id, editTitle, editNote);
+            setEditing(editing => !editing);
+          }}>
             Cохранить
           </button>
         </>
@@ -63,7 +66,10 @@ const Todo = ({
           <div className="title">{title}</div>
           <div className="note">{note}</div>
           <div className="controlPanel">
-            <button onClick={() => editTodo(id)}>
+            <button onClick={() => {
+                editTodo(id);
+                setEditing(editing => !editing)
+              }}>
               <EditIcon
                 className="icons"
                 style={checked ? { backgroundColor: "greenyellow" } : null}
