@@ -15,6 +15,7 @@
 
         .date {
             align-self: flex-end;
+            margin-left: 10px;
         }
         .icons {
             margin-bottom: -4px;
@@ -30,6 +31,12 @@
     .note {
         word-wrap: break-word;
         margin-bottom: 15px;
+    }
+
+    .edit_todo {
+        border: 1px solid grey;
+        border-radius: 5px;
+        padding: 5px 15px;
     }
 }
 

@@ -3,7 +3,7 @@ import Todo from '../Todo/Todo';
 
 import './todos.scss'
 
-const Todos = ({todos, checkTodo, deleteTodo}) => {
+const Todos = ({todos, checkTodo, deleteTodo, editTodo}) => {
   return (
     <div className='todos'>
         {
@@ -14,8 +14,10 @@ const Todos = ({todos, checkTodo, deleteTodo}) => {
               note={todo.note} 
               checked={todo.checked} 
               date={todo.date} 
+              editing={todo.editing}
               checkTodo={checkTodo} 
               deleteTodo={deleteTodo} 
+              editTodo={editTodo}
               id={todo.id} 
             />
           })

@@ -44,11 +44,28 @@ const WorkSpace = () => {
     localStorage.setItem("Todos", JSON.stringify(newTodos));
   }
 
+  const editTodo = (id, title, note) => {
+    const newTodos = todos.map(t => {
+      if(t.id === id) {
+        return {
+          ...t,
+          title,
+          note,
+          editing: !t.editing
+        }
+      }
+      return t;
+    })
+    console.log(newTodos);
+    setTodos(newTodos);
+    localStorage.setItem("Todos", JSON.stringify(newTodos));
+  }
+
   return (
     <div className="container">
       <InputTodo addTodo={addTodo} />
       <div className="todosSpace">
-        <Todos todos={todos} checkTodo={checkTodo} deleteTodo={deleteTodo}/>
+        <Todos todos={todos} checkTodo={checkTodo} deleteTodo={deleteTodo} editTodo={editTodo}/>
       </div>
     </div>
   )
