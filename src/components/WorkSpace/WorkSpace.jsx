@@ -15,11 +15,26 @@ const WorkSpace = () => {
     })
   }
 
+  const checkTodo = (id) => {
+    const newTodos = todos.map(t => {
+      if(t.id === id) {
+        return {
+          ...t,
+          checked: !t.checked
+        }
+      }
+      return t;
+    })
+    console.log(newTodos);
+    setTodos(newTodos);
+    localStorage.setItem("Todos", JSON.stringify(newTodos));
+  }
+
   return (
     <div className="container">
       <InputTodo addTodo={addTodo} />
       <div className="todosSpace">
-        <Todos todos={todos} />
+        <Todos todos={todos} checkTodo={checkTodo} />
       </div>
     </div>
   )

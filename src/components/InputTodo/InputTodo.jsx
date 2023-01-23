@@ -9,9 +9,11 @@ const InputTodo = ({addTodo}) => {
   const { enqueueSnackbar } = useSnackbar();
 
   const [formData, setFormData] = useState({
+    id: `${Date.now()}-idTodo`,
     title: "",
     note: "",
-    date: new Date().toLocaleDateString()
+    date: new Date().toLocaleDateString(),
+    checked: false
   });
 
   const inputChangeHandler = (e) => {
@@ -44,9 +46,11 @@ const InputTodo = ({addTodo}) => {
       enqueueSnackbar("Todo has been added", { variant: "success" });
 
       setFormData({
+        id: `${Date.now()}-idTodo`,
         title: "",
         note: "",
-        date: new Date().toLocaleDateString()
+        date: new Date().toLocaleDateString(),
+        checked: false
       });
     }
   }

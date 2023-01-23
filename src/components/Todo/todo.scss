@@ -6,18 +6,34 @@
     box-sizing: border-box;
     border-radius: 10px;
     padding: 2rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     align-self: flex-start;
-    .date {
-        align-self: flex-end;
+
+    .controlPanel {
+        display: flex;
+        justify-content: end;
+
+        .date {
+            align-self: flex-end;
+        }
+        .checkedImg {
+            margin-bottom: -4px;
+        }
     }
+
     .title {
         font-size: 25px;
         font-weight: 700;
         margin-bottom: 15px;
     }
+
     .note {
         word-wrap: break-word;
         margin-bottom: 15px;
     }
+}
+
+.checked {
+    background-color: greenyellow;
+    color: black;
 }
