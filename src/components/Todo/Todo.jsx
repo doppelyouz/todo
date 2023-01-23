@@ -4,7 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import './todo.scss'
 
-const Todo = ({title, note, date, checkTodo, id, checked}) => {
+const Todo = ({title, note, date, checkTodo, deleteTodo, id, checked}) => {
   let todoStyles = `todo`;
   if(checked) {
     todoStyles += ' checked';
@@ -14,11 +14,11 @@ const Todo = ({title, note, date, checkTodo, id, checked}) => {
         <div className='title'>{title}</div>
         <div className='note'>{note}</div>
         <div className="controlPanel">
-          <button>
-            <DeleteIcon className="checkedImg" style={checked ? {backgroundColor: "greenyellow"} : null}/>
+          <button onClick={() => deleteTodo(id)}>
+            <DeleteIcon className="icons" style={checked ? {backgroundColor: "greenyellow"} : null}/>
           </button>
           <button onClick={() => checkTodo(id)}>
-            <CheckIcon className="checkedImg" style={checked ? {backgroundColor: "greenyellow"} : null}/>
+            <CheckIcon className="icons" style={checked ? {backgroundColor: "greenyellow"} : null}/>
           </button>
           <div className='date'>{date}</div>
         </div>

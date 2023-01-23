@@ -4,7 +4,11 @@ import './workSpace.scss'
 import InputTodo from '../InputTodo/InputTodo'
 import Todos from '../Todos/Todos'
 
+import { useSnackbar } from 'notistack';
+
 const WorkSpace = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
   const localData = JSON.parse(localStorage.getItem("Todos") || "[]");
   const [todos, setTodos] = useState(localData);
 
@@ -25,7 +29,17 @@ const WorkSpace = () => {
       }
       return t;
     })
-    console.log(newTodos);
+    setTodos(newTodos);
+    localStorage.setItem("Todos", JSON.stringify(newTodos));
+  }
+
+  const deleteTodo = (id) => {
+    const newTodos = todos.filter(t => {
+        if(t.id !== id) {
+          return t;
+        }
+    })
+    enqueueSnackbar("Todo has been removed", { variant: "info" });
     setTodos(newTodos);
     localStorage.setItem("Todos", JSON.stringify(newTodos));
   }
@@ -34,7 +48,7 @@ const WorkSpace = () => {
     <div className="container">
       <InputTodo addTodo={addTodo} />
       <div className="todosSpace">
-        <Todos todos={todos} checkTodo={checkTodo} />
+        <Todos todos={todos} checkTodo={checkTodo} deleteTodo={deleteTodo}/>
       </div>
     </div>
   )
