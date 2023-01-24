@@ -43,7 +43,7 @@ const WorkSpace = () => {
     setTodos(newTodos);
     localStorage.setItem("Todos", JSON.stringify(newTodos));
   }
-
+  console.log(todos);
   const editTodo = (id, title, note) => {
     const newTodos = todos.map(t => {
       if(t.id === id) {

@@ -14,6 +14,7 @@ const Todos = ({todos, checkTodo, deleteTodo, editTodo}) => {
               note={todo.note} 
               checked={todo.checked} 
               date={todo.date} 
+              type={todo.type} 
               checkTodo={checkTodo} 
               deleteTodo={deleteTodo} 
               editTodo={editTodo}

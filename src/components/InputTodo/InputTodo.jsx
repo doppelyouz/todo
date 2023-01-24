@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
 import "./inputTodo.scss";
 import { useSnackbar } from 'notistack';
 
 import Button from "@mui/material/Button";
 
 const InputTodo = ({addTodo}) => {
-  const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar()
 
   const [formData, setFormData] = useState({
     id: `${Date.now()}-idTodo`,
     title: "",
     note: "",
     date: new Date().toLocaleDateString(),
-    checked: false
+    checked: false,
+    type: "default"
   });
 
   const inputChangeHandler = (e) => {
@@ -50,7 +57,8 @@ const InputTodo = ({addTodo}) => {
         title: "",
         note: "",
         date: new Date().toLocaleDateString(),
-        checked: false
+        checked: false,
+        type: "default"
       });
     }
   }
@@ -77,6 +85,23 @@ const InputTodo = ({addTodo}) => {
             onChange={inputChangeHandler}
           />
         </label>
+        <Box sx={{ maxWidth: "50%" }}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Type</InputLabel>
+            <Select
+              name="type"
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={formData.type}
+              label="Type"
+              onChange={inputChangeHandler}
+            >
+              <MenuItem value="default">Default</MenuItem>
+              <MenuItem value="important">Important</MenuItem>
+              <MenuItem value="warning">Warning</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
         <div className="save">
           <Button variant="contained" type="sumbit" onClick={sumbitTodo}>
             Сохранить

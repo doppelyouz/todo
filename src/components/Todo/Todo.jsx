@@ -14,6 +14,7 @@ const Todo = ({
   deleteTodo,
   editTodo,
   id,
+  type,
   checked,
 }) => {
   const [editing, setEditing] = useState(false);
@@ -31,6 +32,23 @@ const Todo = ({
   if (checked) {
     todoStyles += " checked";
   }
+
+  const typeChecker = () => {
+    switch(type) {
+      case "default":
+        break;
+      case "important":
+        todoStyles += " important";
+        break;
+      case "warning":
+        todoStyles += " warning";
+        break;
+      default:
+        break;
+    }
+  }
+  
+  typeChecker();
 
   return (
     <div className={todoStyles}>
